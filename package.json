@@ -1,6 +1,6 @@
 {
   "name": "NCore.Base.Log",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple and easy logging configuration in code using nlog",
   "main": "index.js",
   "files": [
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "test": "dotnet build /t:restore && dotnet test ./NCore.Base.LogTests/NCore.Base.LogTests.csproj",
-    "build": "dotnet clean && dotnet build /t:restore && dotnet pack --include-symbols --include-source && rm -f lib/*.nupkg && find NCore.Base.Log/* -name *.nupkg -exec cp {} lib \\;",
+    "build": "dotnet clean && dotnet build && dotnet pack --include-symbols --include-source && rm -f lib/*.nupkg && find NCore.Base.Log/* -name *.nupkg | xargs -I files cp files lib",
     "demo": "cd NCore.Base.LogDemo && dotnet run",
     "postinstall": "node scripts/postinstall.js"
   },

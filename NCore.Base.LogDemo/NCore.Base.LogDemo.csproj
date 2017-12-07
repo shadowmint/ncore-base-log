@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\NCore.Base.Log\NCore.Base.Log.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NLog" Version="5.0.0-beta07" />
+    <PackageReference Include="NLog" Version="5.0.0-beta11" />
   </ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
