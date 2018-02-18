@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using NLog;
 using NLog.Common;
+using NLog.LayoutRenderers.Wrappers;
 
 namespace NCore.Base.Log
 {
@@ -15,11 +16,17 @@ namespace NCore.Base.Log
 
     private IConfigBuilder _configSettings;
 
-    public void ConfigureLogging<T>() where T : IConfigBuilder
+    public void ConfigureLogging<T>(T instance) where T : IConfigBuilder
     {
-      _configSettings = Activator.CreateInstance<T>();
+      _configSettings = instance;
       CreateLogFolder(_configSettings);
       LogManager.Configuration = _configSettings.Build();
+    }
+
+    public void ConfigureLogging<T>() where T : IConfigBuilder
+    {
+      var instance = Activator.CreateInstance<T>();
+      ConfigureLogging(instance);
     }
 
     public void ConfigureLogging()
